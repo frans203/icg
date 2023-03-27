@@ -67,7 +67,7 @@ while running:
     put_pixel(30, 30) #Rendering point
     draw_line(40, 40, 60, 60) #Rendering line
     draw_triangle(100, 100, 200, 200, 400, 100) #Rendering triangle, the points toguether should be possible to create a triangle
-    for event in pygame.event.get():
+    for event in pygame.event.get(): #Exiting program if the esc is pressed or users clicks the X button
             if event.type == QUIT:
                 running = False
             elif event.type == KEYDOWN:
