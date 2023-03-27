@@ -22,7 +22,7 @@ def draw_line(x0, y0, x1, y1):
     
     if dx < 0:
         dx = -dx
-        stepy = 1
+        stepy = -1
     else:
         stepx = 1
     
@@ -52,8 +52,8 @@ def draw_line(x0, y0, x1, y1):
             put_pixel(x0, y0)
 
 
-def draw_triangle(x0, y0, x1, y1, x2, y2):
-    draw_line(x0, y0, x1, y1)
+def draw_triangle(x0, y0, x1, y1, x2, y2): 
+    draw_line(x0, y0, x1, y1) 
     draw_line(x0, y0, x2, y2)
     draw_line(x1, y1, x2, y2)
 
@@ -64,9 +64,9 @@ clock = pygame.time.Clock() #creating instance of Clock to set framerate
 
 running = True
 while running:
-    put_pixel(30, 30)
-    draw_line(40, 40, 60, 60)
-    draw_triangle(100, 100, 200, 200, 400, 100) #the points toguether should be possible to create a triangle
+    put_pixel(30, 30) #Rendering point
+    draw_line(40, 40, 60, 60) #Rendering line
+    draw_triangle(100, 100, 200, 200, 400, 100) #Rendering triangle, the points toguether should be possible to create a triangle
     for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
