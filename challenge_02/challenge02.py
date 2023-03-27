@@ -1,11 +1,11 @@
 import pygame
 from pygame.locals import *
 
-PIXEL_SIZE = 3
+PIXEL_SIZE = 1
 SCREEN_WIDTH, SCREEN_HEIGHT = 512, 512
 
-surf = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
-surf.fill((0,0,0))
+surf = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT)) #surface instance
+surf.fill((0,0,0)) #filling surface with black color 
 
 def put_pixel(x,y):
     global surf 
@@ -26,7 +26,7 @@ def draw_line(x0, y0, x1, y1):
     else:
         stepx = 1
     
-    dx <<= 2
+    dx <<= 2 #multiplying this variables by 4, to achive more precise and smooth results of line drawing
     dy <<= 2
    
 
@@ -57,16 +57,16 @@ def draw_triangle(x0, y0, x1, y1, x2, y2):
     draw_line(x0, y0, x2, y2)
     draw_line(x1, y1, x2, y2)
 
-pygame.init()
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Line Drawing")
-clock = pygame.time.Clock()
+pygame.init() #initialize pygame
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #creates scren surface with the height and width variables
+pygame.display.set_caption("Line Drawing") #set the title of the window
+clock = pygame.time.Clock() #creating instance of Clock to set framerate
 
 running = True
 while running:
     put_pixel(30, 30)
     draw_line(40, 40, 60, 60)
-    draw_triangle(10, 10, 20, 20, 40, 10) #the points toguether should be possible to create a triangle
+    draw_triangle(100, 100, 200, 200, 400, 100) #the points toguether should be possible to create a triangle
     for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
@@ -75,7 +75,7 @@ while running:
                     running = False
 
     if running:
-        clock.tick(60)
+        clock.tick(60) #framerate to 60fps
 
-        screen.blit(surf, (0, 0))
-        pygame.display.update()
+        screen.blit(surf, (0, 0)) #draw surf surface onto the screen surface
+        pygame.display.update() #updates any changes of the screen 
