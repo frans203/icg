@@ -14,6 +14,7 @@ def put_pixel(x,y):
 def draw_line(x0, y0, x1, y1):
     dx = x1 - x0
     dy = y1 - y0
+    stepx = 1
     if dy < 0:
         dy = -dy
         stepy = -1
@@ -64,15 +65,25 @@ clock = pygame.time.Clock() #creating instance of Clock to set framerate
 
 running = True
 while running:
-    put_pixel(30, 30) #Rendering point
-    draw_line(40, 40, 60, 60) #Rendering line
-    draw_triangle(100, 100, 200, 200, 400, 100) #Rendering triangle, the points toguether should be possible to create a triangle
+    # put_pixel(30, 30) #Rendering point
+    # draw_line(40, 40, 60, 60) #Rendering line
+    # draw_triangle(100, 100, 200, 200, 400, 100) #Rendering triangle, the points toguether should be possible to create a triangle
+    # drawing lines to create the expected result for the challenge
+    draw_line(0,0, 512, 512)
+    draw_line(0, 512, 512, 0)
+    draw_line(256, 0, 256, 512)
+    draw_line(0, 256, 512, 256)
+    draw_line(128, 0, 384, 512 )
+    draw_line( 128, 512, 384, 0)
+    draw_line(0, 384, 512, 128)
+    draw_line(0,128,512, 384)
     for event in pygame.event.get(): #Exiting program if the esc is pressed or users clicks the X button
             if event.type == QUIT:
                 running = False
             elif event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
                     running = False
+            
 
     if running:
         clock.tick(60) #framerate to 60fps
